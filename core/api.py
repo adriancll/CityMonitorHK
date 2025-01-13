@@ -18,21 +18,10 @@ def get_eta(stop_id, route, option="time"):
         elif option == "time":
             eta_time = datetime.fromisoformat(next_eta[:-6])
             return eta_time.strftime("%H:%M")
-    return "No data available for this bus / This bus is not stopping at this stop"
+    return "N/A"
 
-def get_all_eta_countdowns(file_path):
-    with open(file_path, 'r') as file:
-        savedbuses = json.load(file)
-    
-    countdowns = {}
-    for bus in savedbuses:
-        route = bus["route"]
-        stop_id = bus["stop_id"]
-        countdown = get_eta(stop_id, route, "countdown")
-        countdowns[f"Route {route} at Stop {stop_id}"] = countdown
-        
-    return countdowns
 
+#print(get_eta("002546","6","countdown"))
 """
 countdowns = get_all_eta_countdowns("/Users/2115099/Desktop/CityMonitor/saved.json")
 print(countdowns)
