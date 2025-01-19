@@ -8,6 +8,8 @@ app.config['SECRET_KEY'] = 'citymonitor'
 app.config['ADMIN_USERNAME'] = 'admin'
 app.config['ADMIN_PASSWORD'] = 'admin'
 
+
+
 def time():
     current_time = datetime.now()
     hours = current_time.hour % 12
@@ -31,9 +33,24 @@ with open(os.path.join('static', 'saved.json'), 'r') as f:
         print(entry['route'], entry['stop_id'])"""
 
 
+def get_eta_countdown(stop):
+    countdown = api.get_eta(stop['stop_id'], stop['route'], "countdown")
+    return 0 if countdown == "Now" else int(countdown)
+
 @app.route('/')
 def home():
-    return render_template("index.html",saved=saved, api=api, time=time, date=date)
+    current_date = datetime.now()
+    day = current_date.day
+    month = current_date.month
+    date = f"{day}/{month}"
+    current_time = datetime.now()
+    hours = current_time.hour % 12
+    if hours == 0:
+        hours = 12
+    minutes = current_time.minute
+    time = f"{hours}:{minutes:02}"
+    sorted_saved = sorted(saved, key=get_eta_countdown)
+    return render_template("index.html", saved=sorted_saved, api=api, time=time, date=date)
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():

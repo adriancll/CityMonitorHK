@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="30">
+    <meta http-equiv="refresh" content="15">
     <link rel="stylesheet" href="static/css/style.css">
     <title>Citymonitor</title>
 </head>
@@ -40,23 +40,23 @@
                 </tr>
                 <tr id="saved-stop-1">
                     <td>{{saved[0]['route']}}</td>
-                    <td>{{api.get_eta(saved[0]['stop_id'], saved[0]['route'], "time")}}</td>
-                    <td>{{api.get_eta(saved[0]['stop_id'], saved[0]['route'], "countdown")}}m</td>
+                    <td >{{api.get_eta(saved[0]['stop_id'], saved[0]['route'], "time")}}</td>
+                    <td >{% if api.get_eta(saved[0]['stop_id'], saved[0]['route'], "countdown") == "Now" %}Now{% else %}{{api.get_eta(saved[0]['stop_id'], saved[0]['route'], "countdown")}}m{% endif %}</td>
                 </tr>
                 <tr id="saved-stop-2">
                     <td>{{saved[1]['route']}}</td>
-                    <td>{{api.get_eta(saved[1]['stop_id'], saved[1]['route'], "time")}}</td>
-                    <td>{{api.get_eta(saved[1]['stop_id'], saved[1]['route'], "countdown")}}m</td>
+                    <td >{{api.get_eta(saved[1]['stop_id'], saved[1]['route'], "time")}}</td>
+                    <td >{% if api.get_eta(saved[1]['stop_id'], saved[1]['route'], "countdown") == "Now" %}Now{% else %}{{api.get_eta(saved[1]['stop_id'], saved[1]['route'], "countdown")}}m{% endif %}</td>
                 </tr>
                 <tr id="saved-stop-3">
                     <td>{{saved[2]['route']}}</td>
-                    <td>{{api.get_eta(saved[2]['stop_id'], saved[2]['route'], "time")}}</td>
-                    <td>{{api.get_eta(saved[2]['stop_id'], saved[2]['route'], "countdown")}}m</td>
+                    <td >{{api.get_eta(saved[2]['stop_id'], saved[2]['route'], "time")}}</td>
+                    <td >{% if api.get_eta(saved[2]['stop_id'], saved[2]['route'], "countdown") == "Now" %}Now{% else %}{{api.get_eta(saved[2]['stop_id'], saved[2]['route'], "countdown")}}m{% endif %}</td>
                 </tr>
-                <tr id="saved-stop-4"}>
+                <tr id="saved-stop-4">
                     <td>{{saved[3]['route']}}</td>
-                    <td>{{api.get_eta(saved[3]['stop_id'], saved[3]['route'], "time")}}</td>
-                    <td>{{api.get_eta(saved[3]['stop_id'], saved[3]['route'], "countdown")}}m</td>
+                    <td >{{api.get_eta(saved[3]['stop_id'], saved[3]['route'], "time")}}</td>
+                    <td >{% if api.get_eta(saved[3]['stop_id'], saved[3]['route'], "countdown") == "Now" %}Now{% else %}{{api.get_eta(saved[3]['stop_id'], saved[3]['route'], "countdown")}}m{% endif %}</td>
                 </tr>
             </tbody>
         </table>
