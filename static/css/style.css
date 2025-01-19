@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;700&display=swap');
+
+body {
+    font-family: 'SF Pro Display', sans-serif;
+    background-color: #FAE123;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    margin-left: 40px;
+    float: left;
+    scale: 120%;
+    flex-shrink: 0;
+}
+
+hr {
+    margin: 0vh;
+    border: 0vh;
+    border-top: 2px solid #0154B8;
+    width: calc(100% + 30px);
+    margin-left: -15px;
+}
+
+.topbar-item {
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    font-family: "SF Pro Display";
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-right: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+table {
+    margin: 0;
+    font-family: "SF Pro Display";
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+th, td {
+    text-align: center;
+}
+th:nth-child(2), td:nth-child(2),
+th:nth-child(3), td:nth-child(3) {
+    text-align: center;
+    padding-right: 5px;
+    margin-right: 5px;
+}
+th {
+    font-size: 2.5em;
+}
+td {
+    font-size: 4em;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <h2>CityMonitor Saved Buses</h1>
+    <form method="POST" action="/admin" onsubmit="reloadPage()">
+        {% for entry in saved %}
+            <div>
+                <label>Route:</label>
+                <input type="text" name="route_{{ loop.index }}" value="{{ entry.route }}">
+                <label>Stop ID:</label>
+                <input type="text" name="stop_id_{{ loop.index }}" value="{{ entry.stop_id }}">
+            </div>
+        {% endfor %}
+        <button type="submit">Save</button>
+        <button type="button" onclick="window.location.href='/logout'">Logout</button>
+    </form>
+    <script>
+        function reloadPage() {
+            setTimeout(function() {
+                window.location.reload();
+            }, 1000); // Adjust the timeout as needed
+        }
+    </script>
+</body>
+</html>

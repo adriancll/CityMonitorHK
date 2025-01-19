@@ -4,30 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="30">
+    <link rel="stylesheet" href="static/css/style.css">
     <title>Citymonitor</title>
 </head>
 <body>
     <div id="topbar">
-        <img src="static/images/citymonitor.svg">
-        <h1>{{date}}</h1>
-        <h1>{{time}}</h1>
-    </div>
-    <div id="stop-wrapper">
-        <div>
-            <div id="saved-stop-1">
-                <h1>{{saved[0]['route']}} {{api.get_eta(saved[0]['stop_id'],saved[0]['route'],"time")}} {{api.get_eta(saved[0]['stop_id'],saved[0]['route'],"countdown")}}m</h1>
-            </div>
-            <div id="saved-stop-2">
-                <h1>{{saved[1]['route']}} {{api.get_eta(saved[1]['stop_id'],saved[1]['route'],"time")}} {{api.get_eta(saved[1]['stop_id'],saved[1]['route'],"countdown")}}m</h1>
-            </div>
-            <div id="saved-stop-3">
-                <h1>{{saved[2]['route']}} {{api.get_eta(saved[2]['stop_id'],saved[2]['route'],"time")}} {{api.get_eta(saved[2]['stop_id'],saved[2]['route'],"countdown")}}m</h1>
-            </div>
-            <div id="saved-stop-4">
-                <h1>{{saved[3]['route']}} {{api.get_eta(saved[3]['stop_id'],saved[3]['route'],"time")}} {{api.get_eta(saved[3]['stop_id'],saved[3]['route'],"countdown")}}m</h1>
-            </div>
+        <img src="static/images/citymonitor.svg" id="logo">
+        <div style="display: flex; gap: 20px;">
+            <h1 class="topbar-item">{{time}}</h1>
+            <h1 class="topbar-item">{{date}}</h1>
         </div>
     </div>
+    <!--
+    <div id="topbar">
+        <div style="display: flex; gap: 20px;">
+            <h1 class="topbar-bottom-item">Route</h1>
+            <h1 class="topbar-bottom-item">ETA Time</h1>
+            <h1 class="topbar-bottom-item" id="etacountdown">ETA Countdown</h1>
+        </div>
+    </div>
+    -->
+    <div id="stop-wrapper">
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Route</th>
+                    <th>ETA Time</th>
+                    <th>ETA Countdown</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3"><hr></td>
+                </tr>
+                <tr id="saved-stop-1">
+                    <td>{{saved[0]['route']}}</td>
+                    <td>{{api.get_eta(saved[0]['stop_id'], saved[0]['route'], "time")}}</td>
+                    <td>{{api.get_eta(saved[0]['stop_id'], saved[0]['route'], "countdown")}}m</td>
+                </tr>
+                <tr id="saved-stop-2">
+                    <td>{{saved[1]['route']}}</td>
+                    <td>{{api.get_eta(saved[1]['stop_id'], saved[1]['route'], "time")}}</td>
+                    <td>{{api.get_eta(saved[1]['stop_id'], saved[1]['route'], "countdown")}}m</td>
+                </tr>
+                <tr id="saved-stop-3">
+                    <td>{{saved[2]['route']}}</td>
+                    <td>{{api.get_eta(saved[2]['stop_id'], saved[2]['route'], "time")}}</td>
+                    <td>{{api.get_eta(saved[2]['stop_id'], saved[2]['route'], "countdown")}}m</td>
+                </tr>
+                <tr id="saved-stop-4"}>
+                    <td>{{saved[3]['route']}}</td>
+                    <td>{{api.get_eta(saved[3]['stop_id'], saved[3]['route'], "time")}}</td>
+                    <td>{{api.get_eta(saved[3]['stop_id'], saved[3]['route'], "countdown")}}m</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 </body>
 </html>

@@ -14,7 +14,7 @@ def get_eta(stop_id, route, option="time"):
             eta_time = datetime.fromisoformat(next_eta[:-6])
             now = datetime.now()
             countdown = (eta_time - now).total_seconds() // 60
-            return int(countdown)
+            return "Now" if countdown <= 0 else f"{int(countdown)}"
         elif option == "time":
             eta_time = datetime.fromisoformat(next_eta[:-6])
             return eta_time.strftime("%H:%M")
