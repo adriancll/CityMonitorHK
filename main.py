@@ -51,6 +51,16 @@ def home():
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
+    current_date = datetime.now()
+    day = current_date.day
+    month = current_date.month
+    date = f"{day}/{month}"
+    current_time = datetime.now()
+    hours = current_time.hour % 12
+    if hours == 0:
+        hours = 12
+    minutes = current_time.minute
+    time = f"{hours}:{minutes:02}"
     if 'logged_in' not in session:
         auth = request.authorization
         if not auth or auth.username != app.config['ADMIN_USERNAME'] or auth.password != app.config['ADMIN_PASSWORD']:
@@ -71,7 +81,7 @@ def admin():
         with open(os.path.join('static', 'saved.json'), 'r') as f:
             saved = json.load(f)
         return redirect(url_for('admin'))
-    return render_template("admin.html", saved=saved)
+    return render_template("admin.html", saved=saved, date=date, time=time)
 
 @app.route('/logout')
 def logout():

@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css">
     <title>Admin Dashboard</title>
 </head>
 <body>
-    <h1>Admin Dashboard</h1>
-    <h2>CityMonitor Saved Buses</h1>
+    <div id="topbar">
+        <img src="static/images/citymonitor.svg" id="logo">
+        <div style="display: flex; gap: 20px;">
+            <h1>Admin Dashboard</h1>
+            <h1 class="topbar-item">{{time}}</h1>
+            <h1 class="topbar-item">{{date}}</h1>
+        </div>
+    </div>
+    <hr>
+    <h1>CityMonitor Saved Buses</h1>
     <form method="POST" action="/admin" onsubmit="reloadPage()">
         {% for entry in saved %}
             <div>
@@ -24,7 +33,7 @@
         function reloadPage() {
             setTimeout(function() {
                 window.location.reload();
-            }, 1000); // Adjust the timeout as needed
+            }, 1000); 
         }
     </script>
 </body>
