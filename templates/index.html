@@ -50,25 +50,25 @@
                 <tr>
                     <td colspan="3"><hr></td>
                 </tr>
-                <tr id="saved-stop-1">
+                <tr id="saved-stop-1" {% set countdown = api.get_eta(saved[0]['stop_id'], saved[0]['route'], "countdown") %} {% if countdown != "N/A" and (countdown == "Now" or countdown|int < 3) %}style="color: #E80028;"{% endif %}>
                     <td>{{saved[0]['route']}}</td>
-                    <td >{{api.get_eta(saved[0]['stop_id'], saved[0]['route'], "time")}}</td>
-                    <td >{% if api.get_eta(saved[0]['stop_id'], saved[0]['route'], "countdown") == "Now" %}Now{% else %}{{api.get_eta(saved[0]['stop_id'], saved[0]['route'], "countdown")}}m{% endif %}</td>
+                    <td>{{api.get_eta(saved[0]['stop_id'], saved[0]['route'], "time")}}</td>
+                    <td>{% if countdown == "Now" %}Now{% else %}{{countdown}}m{% endif %}</td>
                 </tr>
-                <tr id="saved-stop-2">
+                <tr id="saved-stop-2" {% set countdown = api.get_eta(saved[1]['stop_id'], saved[1]['route'], "countdown") %} {% if countdown != "N/A" and (countdown == "Now" or countdown|int < 3) %}style="color: #E80028;"{% endif %}>
                     <td>{{saved[1]['route']}}</td>
                     <td >{{api.get_eta(saved[1]['stop_id'], saved[1]['route'], "time")}}</td>
-                    <td >{% if api.get_eta(saved[1]['stop_id'], saved[1]['route'], "countdown") == "Now" %}Now{% else %}{{api.get_eta(saved[1]['stop_id'], saved[1]['route'], "countdown")}}m{% endif %}</td>
+                    <td>{% if countdown == "Now" %}Now{% else %}{{countdown}}m{% endif %}</td>
                 </tr>
-                <tr id="saved-stop-3">
+                <tr id="saved-stop-3" {% set countdown = api.get_eta(saved[2]['stop_id'], saved[2]['route'], "countdown") %} {% if countdown != "N/A" and (countdown == "Now" or countdown|int < 3) %}style="color: #E80028;"{% endif %}>
                     <td>{{saved[2]['route']}}</td>
-                    <td >{{api.get_eta(saved[2]['stop_id'], saved[2]['route'], "time")}}</td>
-                    <td >{% if api.get_eta(saved[2]['stop_id'], saved[2]['route'], "countdown") == "Now" %}Now{% else %}{{api.get_eta(saved[2]['stop_id'], saved[2]['route'], "countdown")}}m{% endif %}</td>
+                    <td>{{api.get_eta(saved[2]['stop_id'], saved[2]['route'], "time")}}</td>
+                    <td>{% if countdown == "Now" %}Now{% else %}{{countdown}}m{% endif %}</td>
                 </tr>
-                <tr id="saved-stop-4">
+                <tr id="saved-stop-4" {% set countdown = api.get_eta(saved[3]['stop_id'], saved[3]['route'], "countdown") %} {% if countdown != "N/A" and (countdown == "Now" or countdown|int < 3) %}style="color: #E80028;"{% endif %}>
                     <td>{{saved[3]['route']}}</td>
-                    <td >{{api.get_eta(saved[3]['stop_id'], saved[3]['route'], "time")}}</td>
-                    <td >{% if api.get_eta(saved[3]['stop_id'], saved[3]['route'], "countdown") == "Now" %}Now{% else %}{{api.get_eta(saved[3]['stop_id'], saved[3]['route'], "countdown")}}m{% endif %}</td>
+                    <td>{{api.get_eta(saved[3]['stop_id'], saved[3]['route'], "time")}}</td>
+                    <td>{% if countdown == "Now" %}Now{% else %}{{countdown}}m{% endif %}</td>
                 </tr>
             </tbody>
         </table>
