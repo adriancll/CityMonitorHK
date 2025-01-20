@@ -24,9 +24,6 @@ def date():
     month = current_date.month
     return f"{day}/{month}"
 
-date = date()
-time = time()
-        
 with open(os.path.join('static', 'saved.json'), 'r') as f:
     saved = json.load(f)
 """    for entry in saved:
@@ -35,7 +32,7 @@ with open(os.path.join('static', 'saved.json'), 'r') as f:
 
 def get_eta_countdown(stop):
     countdown = api.get_eta(stop['stop_id'], stop['route'], "countdown")
-    return 0 if countdown == "Now" else int(countdown)
+    return float('inf') if countdown == "N/A" else (0 if countdown == "Now" else int(countdown))
 
 @app.route('/')
 def home():
